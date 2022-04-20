@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Угадай слово!</title>
+</head>
+
+<body>
+  <h1>Угадай слово!</h1>
+
+  <script>
+    //создаем  массив со словами
+    var words = ["оладушки", "макака", "транквилизатор", "парашют", "огонь"];
+    //выбираем из масива случайное слово
+    randomWord = words[(Math.floor(Math.random() * words.length))];
+    //создаем массив с угаданными буквами
+    var answeredWord = [];
+    for (var i = 0; i < randomWord.length; ++i){
+      answeredWord[i] = "_";
+    }
+    //счетчик угаданных букв в слове, сначало все буквы не угаданны и совпадают с длинной слова
+    var numberOfNotAnsweredLetters = randomWord.length;
+    //счетчик попыток
+    var attempt = 10;
+
+    while (numberOfNotAnsweredLetters > 0 && attempt > 0){
+      alert("У вас есть "+ attempt + " попыток. Угадайте слово: " + answeredWord.join(" "));
+      var letter = prompt ("Введите букву");
+      if (letter.length !== 1 ){
+        alert("Введите букву!");
+      } else {
+        --attempt;
+        letter = letter.toLowerCase();
+        for (var j = 0; j < randomWord.length; ++j){
+          if (randomWord[j] === letter&&answeredWord[j]=="_"){
+            answeredWord[j] = letter;
+            --numberOfNotAnsweredLetters;
+          }
+        }
+      }
+    }
+    if (numberOfNotAnsweredLetters > 0){
+      alert("У вас закончились попытки!");
+    } else{
+      alert(answeredWord.join(" "));
+      alert("Поздравляю! Вы угадали слово: " + randomWord);
+    }
+    
+    
+  </script>
+</body>
+</html>
