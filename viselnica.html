@@ -47,11 +47,12 @@ var updateGameState = function (guess, word, answerArray) {
             answerArray[j] = guess;
             ++numberOfGuessInWord;
           }
-    return numberOfGuessInWord;
 
     // возвращает число, обозначающее, сколько раз буква guess
     // встречается в слове, чтобы можно было обновить значение
     // remainingLetters
+        }
+        return numberOfGuessInWord;
   };
 
   var showAnswerAndCongratulatePlayer = function (answerArray) {
